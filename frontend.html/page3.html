@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('p1.jpg'); /* Add your background image URL */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .big-btn {
+      color: #060505;
+      border: none;
+      border-radius: 25px;
+      font-size: 24px;
+      margin: 20px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.2); /* Transparent white background */
+      display: block; /* Display the button as a block element */
+      width: 100%; /* Set full width for the button */
+      height: 0; /* Set initial height to 0 */
+      line-height: 100px; /* Center the text vertically */
+      white-space: nowrap; /* Prevent text from wrapping */
+      overflow: hidden; /* Hide overflow text */
+      text-overflow: ellipsis; /* Display ellipsis for overflow text */
+      animation: slideFromTop 0.5s forwards; /* Animation for sliding from top */
+    }
+
+    @keyframes slideFromTop {
+      0% {
+        height: 0; /* Start with height 0 */
+      }
+      100% {
+        height: 100px; /* End with height 100px */
+      }
+    }
+
+    .big-btn:hover {
+      opacity: 0.8;
+    }
+
+    .big-btn:active {
+      opacity: 0.6;
+    }
+
+    .go-back {
+      margin-top: 20px; /* Add space between the button and the "Go Back" link */
+      text-decoration: underline; /* Add underline to the link */
+      color: white; /* Change link color to white */
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="big-btn">AI CHATBOT</button>
+    <a href="page1.html" class="go-back">Go Back</a>
+  </div>
+</body>
+</html>

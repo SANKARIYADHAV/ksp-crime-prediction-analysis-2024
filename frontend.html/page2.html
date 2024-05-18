@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buttons Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('c'); /* Add your background image URL */
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    .big-btn {
+        color: #060505;
+        border: none;
+        border-radius: 25px;
+        font-size: 24px;
+        margin: 20px;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.2); /* Transparent white background */
+        display: block; /* Display the buttons as block elements to place them one below the other */
+        width: 100%; /* Set full width for all buttons */
+        height: 100px; /* Set a fixed height for all buttons */
+        line-height: 100px; /* Center the text vertically */
+        white-space: nowrap; /* Prevent text from wrapping */
+        overflow: hidden; /* Hide overflow text */
+        text-overflow: ellipsis; /* Display ellipsis for overflow text */
+        transition: transform 0.3s, opacity 0.15s; /* Transition for uplifting effect */
+    }
+
+    .big-btn:hover {
+        opacity: 0.8;
+        transform: translateY(-5px); /* Uplifting effect */
+    }
+
+    .big-btn:active {
+        opacity: 0.6;
+    }
+
+    .suggestions-btn {
+        padding: 40px 60px; /* Adjust padding for the "SUGGESTIONS" button */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .go-back {
+        margin-top: 20px; /* Add space between the buttons and the "Go Back" link */
+        text-decoration: underline; /* Add underline to the link */
+        color: white; /* Change link color to white */
+        font-size: 18px;
+    }
+
+    @keyframes slideFromLeft {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideFromRight {
+        0% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .left {
+        animation: slideFromLeft 1s ease forwards;
+    }
+
+    .right {
+        animation: slideFromRight 1s ease forwards;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <button class="big-btn left" id="crime-hotspot-btn">CRIME HOTSPOT</button>
+    <button class="big-btn suggestions-btn right" id="dashboard-btn">DASHBOARD</button>
+    <a href="page1.html" class="go-back">Go Back</a>
+</div>
+
+<script>
+    // Get the button elements
+    const hotspotButton = document.getElementById('crime-hotspot-btn');
+    const dashboardButton = document.getElementById('dashboard-btn');
+
+    // Add click event listener to the buttons
+    hotspotButton.addEventListener('click', function() {
+        // Redirect to page 4 when the "CRIME HOTSPOT" button is clicked
+        window.location.href = 'page4.html';
+    });
+
+    dashboardButton.addEventListener('click', function() {
+        // Redirect to the dashboard page when the "DASHBOARD" button is clicked
+        window.location.href = 'page5.html'; // Change 'dashboard.html' to your actual dashboard page URL
+    });
+</script>
+</body>
+</html>

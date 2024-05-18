@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crime Hotspot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('hotspot.jpg'); /* Add your background image URL */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      color: black; /* Set color of the heading to black */
+    }
+
+    .big-btn {
+      color: white; /* Set text color to white */
+      border: none;
+      border-radius: 50%; /* Make the buttons ellipse-shaped */
+      font-size: 24px;
+      margin: 20px;
+      cursor: pointer;
+      background-color: black; /* Set ellipse color to black */
+      display: block; /* Display the buttons as block elements to place them one below the other */
+      width: 200px; /* Set width for the buttons */
+      height: 100px; /* Set a fixed height for all buttons */
+      line-height: 100px; /* Center the text vertically */
+      white-space: nowrap; /* Prevent text from wrapping */
+      overflow: hidden; /* Hide overflow text */
+      text-overflow: ellipsis; /* Display ellipsis for overflow text */
+      transition: opacity 0.15s;
+    }
+
+    .big-btn:hover {
+      opacity: 0.8;
+    }
+
+    .big-btn:active {
+      opacity: 0.6;
+    }
+
+    .go-back {
+      margin-top: 20px; /* Add space between the buttons and the "Go Back" link */
+      text-decoration: underline; /* Add underline to the link */
+      color: white; /* Change link color to white */
+      font-size: 18px;
+    }
+
+    /* Animation for sliding buttons */
+    @keyframes slideFromLeft {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideFromRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    #b1, #b3 {
+      animation: slideFromLeft 0.5s forwards;
+    }
+
+    #b2 {
+      animation: slideFromRight 0.5s forwards;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hotspots</h1>
+    <button id="b1" class="big-btn">Crime Prediction</button>
+    <button id="b2" class="big-btn">Heat Map</button>
+    <button id="b3" class="big-btn">Future Hotspot</button>
+    <a href="page2.html" class="go-back">Go Back</a>
+  </div>
+</body>
+</html>

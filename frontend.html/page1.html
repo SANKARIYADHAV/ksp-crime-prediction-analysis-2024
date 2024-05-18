@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .background {
+      background-image: url('pg22.png');
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      text-align: center;
+      display: grid;
+      grid-template-columns: auto; /* Set the column width to auto to prevent button overlapping */
+      grid-row-gap: 20px; /* Add gap between rows */
+    }
+    .big-btn {
+      color: #000000;
+      border: none;
+      border-radius: 25px;
+      padding: 30px 60px;
+      font-size: 24px;
+      margin: 20px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.2); /* Transparent white background */
+      transition: opacity 0.15s;
+      animation: slideFromLeft 1s ease forwards; /* Slide animation */
+    }
+    .big-btn:nth-child(2) {
+      animation-name: slideFromRight; /* Change animation for the second button */
+    }
+    @keyframes slideFromLeft {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    @keyframes slideFromRight {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    .big-btn:hover {
+      opacity: 0.8;
+    }
+    .big-btn:active {
+      opacity: 0.6;
+    }
+    .file-input {
+      display: none; /* Hide the file input by default */
+    }
+    #success-message, #error-message {
+      display: none; /* Hide the messages by default */
+      color: rgb(1, 2, 1); /* Color for success message */
+    }
+    #error-message {
+      color: rgb(3, 3, 3); /* Color for error message */
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <div class="container">
+      <label for="file-upload" class="big-btn"><b>UPLOAD THE DATASET</b></label>
+      <input type="file" id="file-upload" class="file-input" onchange="handleFileUpload(event)">
+      <br>
+      <a href="page2.html" target="_blank"><button class="big-btn"><b>CRIME CORNER</b></button></a>
+      <a href="page3.html" target="_blank"><button class="big-btn"><b>POLICE CORNER</b></button></a>
+      <p id="success-message">File uploaded successfully!</p>
+      <p id="error-message">Error uploading file. Please try again.</p>
+    </div>
+  </div>
+
+  <script>
+    function handleFileUpload(event) {
+      const fileInput = event.target;
+      const successMessage = document.getElementById('success-message');
+      const errorMessage = document.getElementById('error-message');
+      
+      if (fileInput.files.length > 0) {
+        // File uploaded successfully
+        successMessage.style.display = 'block';
+        errorMessage.style.display = 'none';
+      } else {
+        // Error uploading file
+        successMessage.style.display = 'none';
+        errorMessage.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
