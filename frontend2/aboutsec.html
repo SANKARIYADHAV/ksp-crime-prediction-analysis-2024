@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        overflow: hidden; /* Hide overflow to prevent horizontal scrolling */
+        position: relative; /* Set position to relative to contain absolute positioned elements */
+    }
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+    h1 {
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 0 20px;
+        position: relative; /* Set position to relative to contain absolute positioned elements */
+    }
+    .about-section {
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.5s ease-in-out;
+    }
+    .about-section h2 {
+        margin-top: 0;
+    }
+    .about-section p {
+        line-height: 1.6;
+    }
+    .about-section.left:hover, .about-section.right:hover {
+        transform: scale(1.05);
+    }
+    .about-section.left {
+        animation: slideFromLeft 1s ease forwards;
+    }
+    .about-section.right {
+        animation: slideFromRight 1s ease forwards;
+    }
+    
+    @keyframes slideFromLeft {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideFromRight {
+        0% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .blood-drop {
+        position: absolute;
+        width: 3px;
+        height: 20px;
+        background-color: red;
+        opacity: 0.8;
+        animation: drop 2s linear infinite;
+        pointer-events: none; /* Prevent the blood drops from interfering with mouse events */
+    }
+
+    @keyframes drop {
+        0% {
+            transform: translateY(-20vh); /* Start above the viewport */
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(100vh); /* End below the viewport */
+            opacity: 0;
+        }
+    }
+
+    .drop1 {
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .drop2 {
+        left: 30%;
+        animation-delay: 0.5s;
+    }
+
+    .drop3 {
+        left: 50%;
+        animation-delay: 1s;
+    }
+
+    .drop4 {
+        left: 70%;
+        animation-delay: 1.5s;
+    }
+
+    .drop5 {
+        left: 90%;
+        animation-delay: 2s;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>About Us</h1>
+</header>
+
+<div class="container">
+    <div class="about-section left">
+        <h2>Our Mission</h2>
+        <p>Police generate and store a large volume of data relating to crime and criminals. However, the challenge does not end in storing and processing the data but in predicting crime hotspots, forecasting crime trends, and predicting offender characteristics. The problem includes identifying areas of specific crimes like murder, property offenses, and other bodily offenses and predicting future hotspots, using the data to predict when and where these crimes occur and also to link the pattern of crime with that of the offenders and predict the likelihood of future crimes based on demographic information and criminal history.</p>
+    </div>
+
+    <div class="about-section right">
+        <h2>Our Team</h2>
+        <p>Welcome to CrimeWatch, our one-stop solution for proactive crime prevention. Explore our Crime Corner, where you'll find advanced features like hotspot prediction, crime trend dashboards, and offender profiling tools. Dive into the Police Corner, where our innovative chatbot provides personalized deployment plans for law enforcement agencies. Join us in revolutionizing crime prevention with AI and advanced data analysis.
+        </p>
+    </div>
+</div>
+
+<div class="blood-drop drop1"></div>
+<div class="blood-drop drop2"></div>
+<div class="blood-drop drop3"></div>
+<div class="blood-drop drop4"></div>
+<div class="blood-drop drop5"></div>
+
+</body>
+</html>

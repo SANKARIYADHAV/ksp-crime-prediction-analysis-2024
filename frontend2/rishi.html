@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Map</title>
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Include Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Include MarkerCluster CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+    <!-- Include MarkerCluster JavaScript -->
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+    <!-- Include Leaflet Heatmap JavaScript -->
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
+    <style>
+        /* Specify map container size */
+        #map {
+            height: 700px;
+            width: 100%;
+        }
+
+        .custom-marker {
+            border-radius: 50%; 
+            width: 20px; 
+            height: 20px;
+        }
+
+        /* Style for red popups */
+        .red-popup .leaflet-popup-content-wrapper {
+            background-color: red;
+            color: rgb(255, 255, 255);
+        }
+
+        /* Style for red popup image */
+        .red-popup .leaflet-popup-tip-container {
+            border-top-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Map container -->
+    <div id="map"></div>
+
+    <script>
+        // Create a Leaflet map centered around Bangalore
+        var map = L.map('map').setView([12.9716, 77.5946], 7); // Bangalore coordinates
+
+        // Add a tile layer for the base map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define custom gradient colors for heatmap
+        var gradientColors = {
+            0.4: '#0000FF', // Blue
+            0.7: '#00FF00', // Green
+            0.8: '#FFFF00', // Yellow
+            1: '#FFA500', // Orange
+            0.9: '#FF0000' // Red
+        };
+
+        // Sample data for heatmap
+        var heatmapData = [
+            // Example data points: [latitude, longitude, district]
+            [12.9716, 77.5946, "Bengaluru City"],
+            [12.9716, 77.5946, "Bengaluru Dist"],
+            // Add more districts here...
+            [15.8485, 74.5083, "Belagavi City"],
+            [15.8497, 74.4977, "Belagavi Dist"],
+            [17.9226, 77.5179, "Bidar"],
+            [11.9236, 76.9395, "Chamarajanagar"],
+            [13.4359, 77.7290, "Chickballapura"],
+            [13.0927, 75.5681, "Chikkamagaluru"],
+            [14.2226, 76.4006, "Chitradurga"],
+            [15.4304, 75.6267, "Gadag"],
+            [13.0072, 76.0969, "Hassan"],
+            [14.7937, 75.4017, "Haveri"],
+            [15.3647, 75.1239, "Hubballi Dharwad City"],
+            [12.3375, 75.8069, "Kodagu"],
+            [13.1377, 78.1292, "Kolar"],
+            [15.3509, 76.1549, "Koppal"],
+            [12.5239, 76.8974, "Mandya"],
+            [12.9141, 74.8550, "Mangaluru City"],
+            [12.2958, 76.6394, "Mysuru City"],
+            [16.2076, 77.3463, "Raichur"],
+            [12.7169, 77.2023, "Ramanagara"],
+            [13.9299, 75.5681, "Shivamogga"],
+            [13.3415, 77.1026, "Tumakuru"]
+        ];
+
+        // Add heatmap layer to the map with custom styling
+        L.heatLayer(heatmapData, {
+            radius: 20, // Increase the radius for larger heat spots
+            blur: 15, // Increase the blur for smoother transitions
+            gradient: gradientColors, // Use custom gradient colors
+            maxOpacity: 0.8 // Set maximum opacity for better visibility
+        }).addTo(map);
+
+        // Create a MarkerCluster to handle large amounts of markers
+        var markerCluster = L.markerClusterGroup();
+
+        // Iterate over the data points and add markers to the MarkerCluster
+        for (var i = 0; i < heatmapData.length; i++) {
+            var dataPoint = heatmapData[i];
+            var lat = dataPoint[0];
+            var lon = dataPoint[1];
+            var district = dataPoint[2];
+
+            // Create a marker with lighter icon and popup
+            var marker = L.marker([lat, lon], {
+                icon: L.divIcon({
+                    className: 'custom-marker',
+                    html: '<div style="border-radius: 50%; width: 20px; height: 20px;"></div>',
+                    iconSize: [20, 20]
+                })
+            }).bindPopup("District: " + district);
+
+            // Add marker to the MarkerCluster
+            markerCluster.addLayer(marker);
+        }
+
+        // Add MarkerCluster to the map
+        map.addLayer(markerCluster);
+
+        // Define the cities with red popups
+        var cities = [
+            { name: "Belagavi City", coordinates: [15.8485, 74.5083] },
+            { name: "Belagavi Dist", coordinates: [15.8497, 74.4977] },
+            { name: "Bengaluru City", coordinates: [12.9716, 77.5946] },
+            { name: "Bengaluru Dist", coordinates: [12.9716, 77.5946] },
+            { name: "Bidar", coordinates: [17.9226, 77.5179] },
+            { name: "Chamarajanagar", coordinates: [11.9236, 76.9395] },
+            { name: "Chickballapura", coordinates: [13.4359, 77.7290] },
+            { name: "Chikkamagaluru", coordinates: [13.0927, 75.5681] },
+            { name: "Chitradurga", coordinates: [14.2226, 76.4006] },
+            { name: "Gadag", coordinates: [15.4304, 75.6267] },
+            { name: "Hassan", coordinates: [13.0072, 76.0969] },
+            { name: "Haveri", coordinates: [14.7937, 75.4017] },
+            { name: "Hubballi Dharwad City", coordinates: [15.3647, 75.1239] },
+            { name: "Kodagu", coordinates: [12.3375, 75.8069] },
+            { name: "Kolar", coordinates: [13.1377, 78.1292] },
+            { name: "Koppal", coordinates: [15.3509, 76.1549] },
+            { name: "Mandya", coordinates: [12.5239, 76.8974] },
+            { name: "Mangaluru City", coordinates: [12.9141, 74.8550] },
+            { name: "Mysuru City", coordinates: [12.2958, 76.6394] },
+            { name: "Raichur", coordinates: [16.2076, 77.3463] },
+            { name: "Ramanagara", coordinates: [12.7169, 77.2023] },
+            { name: "Shivamogga", coordinates: [13.9299, 75.5681] },
+            { name: "Tumakuru", coordinates: [13.3415, 77.1026] }
+        ];
+
+        // Add markers for each city with red popups
+        cities.forEach(function(city) {
+            if (city.coordinates) {
+                var marker = L.marker(city.coordinates).addTo(map);
+                marker.bindPopup("<b>" + city.name + "</b>");
+                marker.on('popupopen', function() {
+                    document.querySelector('.leaflet-popup-tip-container').style.borderTopColor = 'red';
+                    document.querySelector('.leaflet-popup-content-wrapper').classList.add('red-popup');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
