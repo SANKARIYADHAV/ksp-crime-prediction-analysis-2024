@@ -32,7 +32,7 @@ This project aims to harness the power of machine learning and data analysis to 
 To run this project locally, follow these steps:
  Clone the repository:
  sh
-git clone https://github.com/your-username/crime-prediction.git
+git clone https://github.com/SANKARIYADHAV/ksp-crime-prediction-analysis-2004.git
 **cd crime-prediction**
 Create and activate a virtual environment:
 sh
