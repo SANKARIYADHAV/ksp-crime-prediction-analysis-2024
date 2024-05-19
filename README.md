@@ -2,10 +2,10 @@
 
 **Crime Prediction and Prevention Using AI**
 
-**Overview**
+**Overview**:
 Crime patterns are often reactive rather than proactive, leading to resource strain and inefficient crime prevention. This project utilizes AI and advanced data analysis to predict high-risk areas for specific crime types, enabling targeted patrolling, resource allocation, and preventative measures. Additionally, it includes an AI chatbot for deployment planning and a dynamic dashboard for real-time data visualization.
 
-**Table of Contents**
+**Table of Contents**:
     Introduction
     Features
     Installation
@@ -17,10 +17,10 @@ Crime patterns are often reactive rather than proactive, leading to resource str
     Contributing
     License
 
-**Introduction**
+**Introduction**:
 This project aims to harness the power of machine learning and data analysis to predict high-risk areas for various crime types. By leveraging historical crime data, the project will provide insights and visualizations to aid law enforcement agencies in deploying resources more effectively and proactively preventing crime.
 
-**Features**
+**Features**:
  Data loading and preprocessing
  Machine learning model training for crime prediction
  Visualization of high-risk areas (hotspots)
@@ -28,12 +28,12 @@ This project aims to harness the power of machine learning and data analysis to 
  AI chatbot for deployment planning
  Customizable parameters for different crime types and prediction models
 
-**Installation**
+**Installation**:
 To run this project locally, follow these steps:
  Clone the repository:
  sh
 git clone https://github.com/SANKARIYADHAV/ksp-crime-prediction-analysis-2004.git
-**cd crime-prediction**
+**cd crime-prediction**:
 Create and activate a virtual environment:
 sh
 
@@ -44,7 +44,7 @@ Install the required packages:
 sh
 pip install -r requirements.txt
 
-**Usage**
+**Usage**:
 
    1. Load and preprocess the data:
     Ensure you have your crime data in CSV format. Update the data loading script to point to your dataset.
@@ -62,7 +62,7 @@ pip install -r requirements.txt
     5.Interact with the AI Chatbot:
     Use the chatbot interface in the dashboard to receive deployment recommendations and other insights.
 
-**Data**
+**Data**:
 
 This project requires historical crime data, which should include at least the following columns:
 
@@ -72,7 +72,7 @@ This project requires historical crime data, which should include at least the f
     longitude: The longitude coordinate of the crime
     other relevant features...
 
-**Modeling**
+**Modeling**:
 
 The project includes various machine learning models to predict crime hotspots, such as:
 
@@ -81,15 +81,15 @@ The project includes various machine learning models to predict crime hotspots, 
    3. Neural Networks
 
 Models can be customized and evaluated using scripts provided in the models directory.
-**Dashboard**
 
+**Dashboard**:
 An interactive dashboard built with Dash and Plotly provides real-time insights and visualizations:
 
    1. Overview of crime statistics
    2.Heatmaps of predicted high-risk areas
    3.Detailed views for specific crime types and times
 
-**AI Chatbot**
+**AI Chatbot**:
 
 The AI chatbot assists law enforcement by providing deployment recommendations based on the predicted crime hotspots. It leverages natural language processing (NLP) to interact with users and provide actionable insights.
 Contributing
